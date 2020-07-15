@@ -28,38 +28,61 @@ def merge_sort(arr):
     # Your code here
     print(f'splitting list: {arr}')
 
+    if len(arr) <= 1: #base case
+        return arr
+
     if len(arr) > 1: # as long as arr is greater than len of 1
         mid = len(arr) // 2 # find middle of arr
         lhs = arr[:mid] # splicing arr from beginning to middle
         rhs = arr[mid:] # splicing arr from middle to end
 
-        merge_sort(lhs) # keep splitting arr until it is len of 1
-        merge_sort(rhs) # keep splitting arr until it is len of 1
+        lhs = merge_sort(lhs) # keep splitting arr until it is len of 1
+        rhs = merge_sort(rhs) # keep splitting arr until it is len of 1
+
+        arr_merge = merge(lhs, rhs)
+
+        return arr_merge
     
-        i=j=k=0 # each var equals 0
+        # i=j=k=0 # each var equals 0
 
-        while i < len(lhs) and j < len(rhs): # while len of each side of arr is greater than 0 (looping through)
-            if lhs[i] < rhs[j]: # if val of lhs is < val of rhs
-                arr[k] = lhs[i] # enter lhs val into first index of arr
-                i += 1 # increment to the next position on lhs
-                k += 1 # increment to the next position in arr
-            else: # if rhs val is < lhs val (repeat steps above )
-                arr[k] = rhs[j] 
-                j += 1
-                k += 1
+        # while i < len(lhs) and j < len(rhs): # while len of each side of arr is greater than 0 (looping through)
 
-        while i < len(lhs): # while len of lhs > 0
-            arr[k] = lhs[i] # enter lhs val into first index of arr
-            i += 1 
-            k += 1
+        #     # Check if current element  
+        #     # of first array is smaller  
+        #     # than current element of  
+        #     # second array. If yes,  
+        #     # store first array element  
+        #     # and increment first array 
+        #     # index. Otherwise do same  
+        #     # with second array 
 
-        while j < len(rhs): # (same steps above)
-            arr[k] = rhs[j]
-            j += 1
-            k += 1
+        #     if lhs[i] < rhs[j]: # if val of lhs is < val of rhs
+        #         arr[k] = lhs[i] # enter lhs val into first index of arr
+        #         i += 1 # increment to the next position on lhs
+        #         k += 1 # increment to the next position in arr
+        #     else: # if rhs val is < lhs val (repeat steps above)
+        #         arr[k] = rhs[j] 
+        #         j += 1
+        #         k += 1
 
-        merge(lhs, rhs) # merging lists from helper function
-    return arr
+        # # Store remaining elements 
+        # # of first array         
+
+        # while i < len(lhs): # while len of lhs > 0
+        #     arr[k] = lhs[i] # enter lhs val into first index of arr
+        #     i += 1 
+        #     k += 1
+        
+        # # Store remaining elements  
+        # # of second array 
+
+        # while j < len(rhs): # (same steps above)
+        #     arr[k] = rhs[j]
+        #     j += 1
+        #     k += 1
+
+        # merge(lhs, rhs) # merging lists from helper function
+    # return arr
 
 # STRETCH: implement the recursive logic for merge sort in a way that doesn't 
 # utilize any extra memory
