@@ -8,16 +8,16 @@ def merge(arrA, arrB):
     k = 0
 
     for i in range(elements): # go through elements (both arr's)
-        if j == len(arrA): # if index in arrA is length 0
-            merged_arr[i] = arrB[k] 
-            k += 1
-        elif k == len(arrB):
-            merged_arr[i] = arrA[j]
-            j += 1
-        elif arrA[j] < arrB[k]:
-            merged_arr[i] = arrA[j]
-            j += 1
-        else:
+        if j == len(arrA): # if index in arrA is length 0 (if nothing in arrA)
+            merged_arr[i] = arrB[k] # enter elements in arrB
+            k += 1 # increment through arrB
+        elif k == len(arrB): # if index in arrB is length 0 (if nothing in arrB)
+            merged_arr[i] = arrA[j] # enter elements in arrA 
+            j += 1 # increment through arrA
+        elif arrA[j] < arrB[k]: # if val in arrA < val in arrB
+            merged_arr[i] = arrA[j] # enter value in arrA first into mergedArr
+            j += 1 # increment through arrA
+        else: # (vice versa)
             merged_arr[i] = arrB[k]
             k += 1
 
